@@ -1,0 +1,55 @@
+<!doctype HTML>
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" href="css/css.css">
+    <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script>
+        function submitform() { 
+        if (valueCheck() == true) {
+            document.loginForm.submit(); 
+        } else {
+            return;
+        }
+    }
+
+    function valueCheck() {
+        if ($("#id").val() ==""){
+            alert("아이디를 입력해주세요");
+            $("#id").focus();
+        } else if ($("#pswd").val() ==""){
+            alert("비밀번호를 입력해주세요");
+            $("#pswd").focus();
+        } else {
+            return true;
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="login-header">
+        <b>로그인</b>
+    </div>
+    <div class="login-container">
+        <div class="login-wrap">
+            <form name="loginForm" method="post" action="loginAction.jsp">
+            <section class="login-input-section-wrap">
+                <div class="login-input-wrap">
+                    <input placeholder="아이디" type="text" id="id" name="id">
+                </div>
+                <div class="login-input-wrap password-wrap">
+                    <input placeholder="비밀번호" type="password" id="pswd" name="pswd">
+                </div>
+                <div class="login-button-wrap">
+                    <button type="button" onclick="submitform()">로그인</button>
+                </div>
+            </section>
+            </form>
+        </div>
+    </div>
+</body>

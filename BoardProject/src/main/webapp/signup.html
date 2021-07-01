@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lnag="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="css/signup.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        function submitform() {
+            if (valueCheck() == true) {
+                document.signupForm.submit();
+            } else {
+                return;
+            }
+        }
+
+        function valueCheck() {
+            if ($("#id").val() == "") {
+                alert("아이디를 입력해주세요");
+                $("#id").focus();
+            } else if ($("#pswd1").val() == "") {
+                alert("비밀번호를 입력해주세요");
+                $("#pswd1").focus();
+            } else if ($("#pswd2").val() == "") {
+                alert("비밀 번호 확인을 위해 다시 한번 입력해주세요");
+                $("#pswd2").focus();
+            } else if ($("#pswd2").val() != $("#pswd1").val()) {
+                alert("비밀번호가 일치 하지 않습니다. 확인해주세요.");
+                $("#pswd2").focus();
+            } else if ($("#nickname").val() == "") {
+                alert("닉네임을 입력해주세요");
+                $("#pswd1").focus();
+            } else if ($("#yy").val() == "" || $("#mm").val() == null || $("#dd").val() == "") {
+                alert("생년월일을 확인해주세요");
+                $("#yy").focus();
+            } else if ($("#gender").val() == null) {
+                alert("성별을 선택해주세요");
+                $("#gender").focus();
+            } else {
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <b>회원 정보 입력</b>
+    </div>
+    <form name="signupForm" method="post" action="newMember.jsp">
+        <div id="wrapper">
+            <div id="content">
+                <div>
+                    <h3 class="join_title">
+                        <label for="id">아이디</label>
+                    </h3>
+                    <span class="box int_id">
+                        <input type="text" id="id" name="id" class="int" maxlength="20">
+                    </span>
+                </div>
+                <div>
+                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                    <span class="box int_pass">
+                        <input type="password" id="pswd1" name="pswd1" class="int" maxlength="20">
+                    </span>
+                </div>
+                <div>
+                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                    <span class="box int_pass_check">
+                        <input type="password" id="pswd2" class="int" maxlength="20">
+                    </span>
+                </div>
+                <div>
+                    <h3 class="join_title"><label for="nickname">닉네임</label></h3>
+                    <span class="box int_name">
+                        <input type="text" id="nickname" name="nickname" class="int" maxlength="20">
+                    </span>
+                </div>
+                <div>
+                    <h3 class="join_title"><label for="yy">생년월일</label></h3>
+                    <div id="bir_wrap">
+                        <div id="bir_yy">
+                            <span class="box">
+                                <input type="text" id="yy" name="yy" class="int" maxlength="4" placeholder="년(4자)">
+                            </span>
+                        </div>
+                        <div id="bir_mm">
+                            <span class="box">
+                                <select id="mm" name="mm" class="sel">
+                                    <option value="" selected disabled hidden>월</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div id="bir_dd">
+                            <span class="box">
+                                <input type="text" id="dd" name="dd" class="int" maxlength="2" placeholder="일">
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <h3 class="join_title"><label for="gender">성별</label></h3>
+                    <span class="box gender_code">
+                        <select id="gender" name="gender" class="sel">
+                            <option value="" selected disabled hidden>성별</option>
+                            <option value="M">남자</option>
+                            <option value="F">여자</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="btn_area">
+                    <button type="button" id="btnJoin" onclick="submitform()">
+                        <span>가입하기</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
